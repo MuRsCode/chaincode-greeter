@@ -67,9 +67,9 @@ func (t *SimpleChaincode) Query(stub shim.ChaincodeStubInterface, function strin
 		return nil, errors.New("Incorrect number of arguments to Query() - expecting none.")
 	}
 
-	valAsBytes, err := stub.GetState("greeter")	//Read most current name from World State
+	valAsBytes, err := stub.GetState("greetee")	//Read most current name from World State
 	if err != nil {							//Handle error if any
-		return nil, errors.New("{\"Error\":\"Failed to get state for key 'greeter'. Details - " + err.Error() + "\"}")
+		return nil, errors.New("{\"Error\":\"Failed to get state for key 'greetee'. Details - " + err.Error() + "\"}")
 	}
 
 	// Handle different functions
