@@ -75,10 +75,11 @@ func (t *SimpleChaincode) Query(stub shim.ChaincodeStubInterface, function strin
 	// Handle different functions
 	if function == "read" {						
 		fmt.Println(string(valAsBytes))				//Display name currently used in greeting
-		return nil, nil;
+		return valAsBytes, nil;
 	} else if function == "greet" {					//Read name from World State
-		fmt.Println("Hello " + string(valAsBytes) + "!")	//Display greeting
-		return nil, nil;
+                greeting := "Hello " + string(valAsBytes) + "!"
+		fmt.Println(greeting)					//Log the output greeting
+		return []byte(greeting), nil;
 	}
 
 	fmt.Println("Query() did not find function name: " + function)			//Log error
